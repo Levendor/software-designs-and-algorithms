@@ -1,11 +1,10 @@
 import { Consumable } from "./Consumable";
 
 export class Pizza extends Consumable {
-  private numberOfEatenSlices: number;
+  private numberOfEatenSlices: number = 0;
 
   constructor(public value: number, public weight: number, public isSpoiled: boolean, readonly numberOfSlices: number) {
     super("pizza", value, weight, isSpoiled);
-    this.numberOfEatenSlices = 0;
   }
 
   use(): string {

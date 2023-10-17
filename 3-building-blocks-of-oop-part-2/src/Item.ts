@@ -15,10 +15,6 @@ export abstract class Item implements Comparable<Item> {
   use(): void {}
 
   compareTo(other: Item): number {
-    const sortItemsByValue = (item1: Item, item2: Item) => {
-      return Math.sign(item1.value - item2.value);
-    };
-
     const sortItemsByName = (item1: Item, item2: Item) => {
       if (item1.name < item2.name) {
         return -1;
@@ -29,7 +25,7 @@ export abstract class Item implements Comparable<Item> {
       return 0;
     };
 
-    return sortItemsByValue(this, other) || sortItemsByName(this, other);
+    return Math.sign(this.value - other.value) || sortItemsByName(this, other);
   }
 
   toString(): string {

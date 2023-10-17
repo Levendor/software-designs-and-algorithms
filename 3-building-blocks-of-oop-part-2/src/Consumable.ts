@@ -1,11 +1,10 @@
 import { Item } from "./Item";
 
 export abstract class Consumable extends Item {
-  isConsumed: boolean;
+  isConsumed: boolean = false;
 
   constructor(readonly name: string, public value: number, public weight: number, public isSpoiled: boolean = false) {
     super(name, value, weight);
-    this.isConsumed = false;
   }
 
   use(): string {
