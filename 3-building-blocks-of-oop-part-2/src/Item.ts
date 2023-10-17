@@ -16,7 +16,7 @@ export abstract class Item implements Comparable<Item> {
 
   compareTo(other: Item): number {
     const sortItemsByValue = (item1: Item, item2: Item) => {
-      return item1.value - item2.value;
+      return Math.sign(item1.value - item2.value);
     };
 
     const sortItemsByName = (item1: Item, item2: Item) => {
