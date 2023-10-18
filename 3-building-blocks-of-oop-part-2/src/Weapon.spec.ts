@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Weapon } from "./Weapon";
 
 // @ts-expect-error
@@ -37,7 +35,8 @@ describe("Weapon", () => {
 
   describe("use()", () => {
     it("should return proper string for weapon that does not break", () => {
-      expect(weapon.use()).toEqual("You use the bow, dealing 0.05 points of damage.");
+      weapon = new WeaponWithImplementation("bow", 1, 0.5, 2, 1);
+      expect(weapon.use()).toEqual("You use the bow, dealing 0.50 points of damage.");
       expect(weapon.toString()).toEqual("bow − Value: 2.00, Weight: 1.00, Damage: 1.00, Durability: 45.00%");
     });
 
