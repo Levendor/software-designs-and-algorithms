@@ -25,15 +25,11 @@ export const show = (sortBy: SortBy) => (clients: Array<ClientUser>) => (executo
     distance: number,
   }
   
-  console.log('Clients: ', clients, '\nExecutor: ', executor);
-  
   const mappedClients: MappedClient[] = clients
     .map((client) => ({
       ...client,
       distance: distance(executor.position, client.position),
     }));
-    
-  console.log('\nMapped clients: ', mappedClients);
 
   const ord = fromCompare((client1: MappedClient, client2: MappedClient) => (
     sortBy === 'reward'
@@ -41,8 +37,6 @@ export const show = (sortBy: SortBy) => (clients: Array<ClientUser>) => (executo
     : ordNumber.compare(client1[sortBy], client2[sortBy])
   ));
   const sortedClients = sort(ord)([...mappedClients]);
-
-  console.log(`\nSorted by ${sortBy} clients: `, sortedClients);
       
   const filterDem = (executor: ExecutorUser) => (client: MappedClient) => {
     return fold(
@@ -54,8 +48,6 @@ export const show = (sortBy: SortBy) => (clients: Array<ClientUser>) => (executo
   }
       
   const availableClients = sortedClients.filter(filterDem(executor));
-
-  console.log('\nAvailable clients: ', availableClients);
   
   const isAllMet = (sortedClients: MappedClient[]) => (availableClients: MappedClient[]) => availableClients.length === sortedClients.length;
   const isSomeMet = (sortedClients: MappedClient[]) => (availableClients: MappedClient[]) => availableClients.length > 0 && availableClients.length < sortedClients.length;
@@ -67,15 +59,11 @@ export const show = (sortBy: SortBy) => (clients: Array<ClientUser>) => (executo
     [isNoMet(sortedClients), (availableClients) => `This executor cannot meet the demands of any client!`]
   );
   
-  console.log('\nFirst line: ', firstLine(availableClients));
-  
   const output = availableClients.length 
       ? right(firstLine(availableClients) + '\n' + (availableClients.length && availableClients.reduce((output, client) => {
           return output + '\n' + `name: ${client.name}, distance: ${client.distance}, reward: ${client.reward}`;
         }, `\nAvailable clients sorted by ${sortBy === 'reward' ? 'highest reward:' : 'distance to executor:'}`)))
       : left(firstLine(availableClients));
-  
-  console.log('\nOutput: ', output);
   
   return output;
 };
