@@ -42,7 +42,7 @@ export const isLeft = <E, A>(val: Either<E, A>): val is Left<E> => val._tag === 
 export const map = <E, A, B>(fn: (a: A) => B) => (fa: Either<E, A>): Either<E, B> => (
   isRight(fa)
     ? right(fn(fa.right))
-    : left(fa.left)
+    : fa
 );
 
 /**

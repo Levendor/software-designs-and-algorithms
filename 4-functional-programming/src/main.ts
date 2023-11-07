@@ -32,7 +32,7 @@ export const show = (sortBy: SortBy) => (clients: Array<ClientUser>) => (executo
     }));
 
   const ord = fromCompare((client1: MappedClient, client2: MappedClient) => (
-    sortBy === 'reward'
+    sortBy === SortBy.reward
     ? ordNumber.compare(client2[sortBy], client1[sortBy])
     : ordNumber.compare(client1[sortBy], client2[sortBy])
   ));

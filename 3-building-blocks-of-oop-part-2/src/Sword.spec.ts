@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Sword } from "./Sword";
 
 describe("Sword", () => {

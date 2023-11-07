@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Item } from "./Item";
 import { Inventory } from "./Inventory";
 import { ItemComparator } from "./ItemComparator";

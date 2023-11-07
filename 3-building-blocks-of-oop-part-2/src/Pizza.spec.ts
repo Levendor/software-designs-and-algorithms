@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Pizza } from "./Pizza";
 
 describe("Pizza", () => {
