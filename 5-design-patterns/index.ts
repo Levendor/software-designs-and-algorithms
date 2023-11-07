@@ -1,10 +1,10 @@
-import { Client } from "./Client"
+import { Client } from './Client';
 
 const shipmentDTO1 = {
 //   id: 12345,
   weight: 15.4,
   fromAddress: 'some origin address',
-  fromZipCode: '67890',
+  fromZipCode: '17890',
   toAddress: 'some destination address',
   toZipCode: '74953',
 }
@@ -22,7 +22,16 @@ const shipmentDTO3 = {
 //   id: 12345,
   weight: 15.4,
   fromAddress: 'some origin address',
-  fromZipCode: '67890',
+  fromZipCode: '87890',
+  toAddress: 'some destination address',
+  toZipCode: '74953',
+}
+
+const shipmentDTO4 = {
+//   id: 12345,
+  weight: 15.4,
+  fromAddress: 'some origin address',
+  fromZipCode: '07890',
   toAddress: 'some destination address',
   toZipCode: '74953',
 }
@@ -32,3 +41,4 @@ const client = new Client();
 client.getShipment(shipmentDTO1);
 client.getShipment(shipmentDTO2);
 client.getShipment(shipmentDTO3);
+client.getShipment(shipmentDTO4);

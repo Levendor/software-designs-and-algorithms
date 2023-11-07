@@ -1,5 +1,5 @@
-import { Shipment } from "./Shipment";
-import { IShipment } from "./shipment.model";
+import { Shipment } from './Shipment';
+import { IShipment } from './shipment.model';
 
 export class Client {
   getShipment(shipmentDTO: IShipment) {
