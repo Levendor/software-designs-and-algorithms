@@ -1,8 +1,8 @@
 import { Shipper } from '../shipper/Shipper';
 import { IIdGenerator } from '../persistence/id-generator.model';
-import { IShipment } from './shipment.model';
+import { IShipment, IShipmentDTO } from './shipment.model';
 
-export abstract class Shipment {
+export abstract class Shipment implements IShipment {
   static id: number = 0;
 
   id: number;
@@ -12,7 +12,7 @@ export abstract class Shipment {
   toAddress: string;
   toZipCode: string;
 
-  constructor(shipment: IShipment, idGenerator: IIdGenerator = Shipment) {
+  constructor(shipment: IShipmentDTO, idGenerator: IIdGenerator = Shipment) {
     if (!shipment.id) {
       this.id = idGenerator.getShipmentId();
     } else {

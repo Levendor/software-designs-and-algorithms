@@ -1,18 +1,18 @@
 import { IIdGenerator } from '../persistence/id-generator.model';
 import { Shipper } from '../shipper/Shipper';
 import { Shipment } from './Shipment';
-import { IShipment, ShipmentType } from './shipment.model';
+import { IShipment, IShipmentDTO, ShipmentType } from './shipment.model';
 
-export class Letter extends Shipment {
+export class Letter extends Shipment implements IShipment {
   type: ShipmentType;
 
-  private constructor(shipment: IShipment, idGenerator?: IIdGenerator) {
+  private constructor(shipment: IShipmentDTO, idGenerator?: IIdGenerator) {
     super(shipment, idGenerator);
     this.type = ShipmentType.LETTER;
   }
 
   static getInstance(
-    shipment: IShipment,
+    shipment: IShipmentDTO,
     idGenerator?: IIdGenerator
   ) {
     return new Letter(shipment, idGenerator);

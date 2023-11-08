@@ -1,17 +1,17 @@
 import { IIdGenerator } from '../persistence/id-generator.model';
 import { Shipper } from '../shipper/Shipper';
 import { Shipment } from './Shipment';
-import { IShipment, ShipmentType } from './shipment.model';
+import { IShipment, IShipmentDTO, ShipmentType } from './shipment.model';
 
-export class Oversized extends Shipment {
+export class Oversized extends Shipment implements IShipment {
   type: ShipmentType;
 
-  private constructor(shipment: IShipment, idGenerator?: IIdGenerator) {
+  private constructor(shipment: IShipmentDTO, idGenerator?: IIdGenerator) {
     super(shipment, idGenerator);
     this.type = ShipmentType.OVERSIZED;
   }
 
-  static getInstance(shipment: IShipment, idGenerator?: IIdGenerator) {
+  static getInstance(shipment: IShipmentDTO, idGenerator?: IIdGenerator) {
     return new Oversized(shipment, idGenerator);
   }
 

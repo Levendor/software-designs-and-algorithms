@@ -108,26 +108,26 @@ console.log('-----------Letter-----------')
 console.log('[Air East]:')
 client.getShipment(AELetter);
 console.log('\n[Chicago Sprint]:')
-client.getShipment(CSLetter);
+client.getShipment(CSLetter, { fragile: true });
 console.log('\n[Pacific Parcel]:')
-client.getShipment(PPLetter);
+client.getShipment(PPLetter, { doNotLeave: true });
 console.log('\n[Default Shipper]:')
-client.getShipment(DSLetter);
+client.getShipment(DSLetter, { receiptRequested: true });
 console.log('\n-----------Package-----------')
 console.log('[Air East]:')
-client.getShipment(AEPackage);
+client.getShipment(AEPackage, { fragile: true, doNotLeave: true  });
 console.log('\n[Chicago Sprint]:')
-client.getShipment(CSPackage);
+client.getShipment(CSPackage, { fragile: true, receiptRequested: true });
 console.log('\n[Pacific Parcel]:')
-client.getShipment(PPPackage);
+client.getShipment(PPPackage, { doNotLeave: true, receiptRequested: true });
 console.log('\n[Default Shipper]:')
-client.getShipment(DSPackage);
+client.getShipment(DSPackage, { fragile: true, doNotLeave: true, receiptRequested: true });
 console.log('\n-----------Oversized-----------')
 console.log('[Air East]:')
-client.getShipment(AEOversized);
+client.getShipment(AEOversized, { fragile: true });
 console.log('\n[Chicago Sprint]:')
-client.getShipment(CSOversized);
+client.getShipment(CSOversized, { fragile: true, doNotLeave: true });
 console.log('\n[Pacific Parcel]:')
-client.getShipment(PPOversized);
+client.getShipment(PPOversized, { doNotLeave: true, receiptRequested: true });
 console.log('\n[Default Shipper]:')
-client.getShipment(DSOversized);
+client.getShipment(DSOversized, { fragile: true, doNotLeave: true, receiptRequested: true });
