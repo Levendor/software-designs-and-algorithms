@@ -54,7 +54,8 @@ export class Client {
 
   getShipment(shipmentDTO: IShipmentDTO, options: { fragile?: boolean, doNotLeave?: boolean, receiptRequested?: boolean } = {}) {
     const shipper = this.chooseShipper(shipmentDTO);
-    let shipment: any = this.chooseShipmentType(shipmentDTO);
+    let shipment: IShipment = this.chooseShipmentType(shipmentDTO);
+
     if (options.fragile) {
       shipment = this.markAsFragile(shipment);
     }
