@@ -3,7 +3,7 @@ import { Shipper } from '../shipper/Shipper';
 import { Shipment } from './Shipment';
 import { IShipment, IShipmentDTO, ShipmentType } from './shipment.model';
 
-export class Letter extends Shipment implements IShipment {
+export class Letter extends Shipment {
   type: ShipmentType;
 
   private constructor(shipment: IShipmentDTO, idGenerator?: IIdGenerator) {
@@ -19,7 +19,7 @@ export class Letter extends Shipment implements IShipment {
   }
   
   ship(shipper: Shipper) {
-    const cost = shipper.getLetterCost(this.weight);
+    const cost = shipper.getCost(this.type, this.weight);
     return `Shipment with the ID ${this.id} will be picked up from ${this.fromZipCode} ${this.fromAddress} and shipped to ${this.toZipCode} ${this.toAddress}
 Cost = $${cost.toFixed(2)}`;
   }

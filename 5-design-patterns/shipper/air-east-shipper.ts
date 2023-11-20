@@ -1,3 +1,4 @@
+import { ShipmentType } from '../shipment/shipment.model';
 import { Shipper } from './Shipper';
 
 export class AirEastShipper extends Shipper {
@@ -15,14 +16,17 @@ export class AirEastShipper extends Shipper {
   static getInstance() {
     return new AirEastShipper();
   }
-
-  getLetterCost(weight: number) {
-    return this.letterPerOunceRate * weight;
-  }
-  getPackageCost(weight: number) {
-    return this.packagePerOunceRate * weight;
-  }
-  getOversizedCost(weight: number) {
-    return (this.packagePerOunceRate * weight) + this.oversizedAddition;
+  
+  getCost(type: ShipmentType, weight: number): number {
+    switch(type) {
+      case ShipmentType.LETTER:
+        return this.letterPerOunceRate * weight;
+      case ShipmentType.PACKAGE:
+        return this.packagePerOunceRate * weight;
+      case ShipmentType.OVERSIZED:
+        return (this.packagePerOunceRate * weight) + this.oversizedAddition;
+      default:
+        throw Error('Unknown shipment type!');
+    }
   }
 }
