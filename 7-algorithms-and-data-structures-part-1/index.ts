@@ -14,12 +14,18 @@ const edges = [
   new Edge(vertices[0], vertices[3], 3),
   new Edge(vertices[0], vertices[1], 5),
   new Edge(vertices[0], vertices[2], 4),
-  new Edge(vertices[1], vertices[3], 6),
+  new Edge(vertices[3], vertices[1], 6),
   new Edge(vertices[1], vertices[2], 5),
 ];
-const graph: IWeightedGraph<string> = new WeightedGraph();
+const graph: IWeightedGraph<Vertex> = new WeightedGraph();
 
-vertices.forEach(vertex => graph.addVertex(vertex.key));
-edges.forEach(edge => graph.addEdge(edge.from.key, edge.to.key, edge.weight));
+vertices.forEach(vertex => graph.addVertex(vertex));
+edges.forEach(edge => graph.addEdge(edge.from, edge.to, edge.weight));
 
-console.log(graph);
+console.log(graph.findShortestPath(vertices[3], vertices[2]));
+console.log(graph.findShortestPath(vertices[0], vertices[4]));
+console.log(graph.findShortestPath(vertices[0], vertices[0]));
+// console.log(graph.findShortestPath(vertices[2], vertices[3]));
+// console.log(graph.findShortestPath(vertices[0], vertices[4]));
+
+console.log(graph.findAllShortestPaths(vertices[2]));

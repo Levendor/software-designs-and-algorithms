@@ -1,6 +1,10 @@
+import { Vertex } from "./vertex";
+
 export interface IWeightedGraph<T> {
-  addVertex(key: string): void;
+  addVertex(key: T): void;
   addEdge(vertex1: T, vertex2: T, weight: number): void;
+  findAllShortestPaths(vertex: T): Record<string, IPath>;
+  findShortestPath(vertex1: T, vertex2: T): IPath;
 }
 
 export interface IPath {
@@ -9,6 +13,4 @@ export interface IPath {
 }
 
 export interface IDijkstra<T> {
-  findShortestPath(vertex1: T, vertex2: T): IPath;
-  findAllShortestPaths(vertex: T): Record<string, IPath>;
 }
