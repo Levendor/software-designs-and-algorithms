@@ -16,8 +16,10 @@ export class Scheduler implements SchedulerI {
 
   async run(): Promise<void> {
     while (this.schedule.size()) {
-      const task = this.schedule.dequeue();
-      await task();
+      (() => {
+        const task = this.schedule.dequeue();
+        task();
+      })();
     }
     return await Promise.resolve();
   }
